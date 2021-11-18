@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <div class="background">
+    <nav class="navbar fixed-top navbar-expand-lg bg-primary">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand text-white">Encuesta Musical</a>
+        </div>
+      </div>
+    </nav>
+        <div class="d-flex align-items-center justify-content-center h-100">
+          <div *ngIf="state == 0; else postadvice" class="card col-md-4 col-sm-10 col-xs-10 p-0">
+            <div class="card-header d-flex flex-column p-3">
+              <h5 class="card-title mb-0">Hola! Necesitamos tu ayuda</h5>
+              <p class="card-subtitle mb-0">Estamos haciendo una encuesta sobre preferencias musicales</p>
+            </div>
+            <div class="card-body d-flex flex-column align-items-center">
+              <div class="col-12 p-0">
+                <p class="mb-1">Ingresa tu correo</p>
+                <input id="useremail" class="form-control" type="email" name="email" [formControl]="email" placeholder="user@email.com" email>
+                <div *ngIf="(email.invalid && email.touched) || email.dirty">
+                  <small *ngIf="email.errors?.required" class="text-danger">Oh no! El email es necesario</small>
+                  <!--question mark(?) is a safe navigation operator-->
+                  <small *ngIf="email.errors?.pattern" class="text-danger">Por favor ingresa un email correcto :)</small>
+                </div>
+                <p class="mb-0 mt-3">Prefencias Musicales</p>
+                <small *ngIf="msgTagError != ''" class="text-danger">Por favor selecciona al menos una preferencia</small>
+
+                <div id="tags-container" class="d-flex flex-wrap">
+                    <button *ngFor="let genre of musicGenreList" class="btn badge badge-{{(genre.selected) ? 'primary' : 'outline-secondary'}} m-1 pl-2 pr-2 pt-1 pb-1"
+                    (click)="selectGenre(genre)"
+                    >{{genre.name}}</button>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                  <button (click)="send()" class="btn btn-success" id="submit" type="submit">
+                    Enviar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #postadvice>
+            <div class="card col-md-4 col-sm-10 col-xs-10 p-0">
+              <div class="card-body">
+                <p class="text-center">{{msg}}</p>
+                <div *ngIf="state == 3" class="d-flex justify-content-center mt-3">
+                  <button class="btn btn-primary" (click)="retry()">Reintentar</button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ngx-loading [show]="state == 1" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+        </div>
+  </div>
+</div>
+
+

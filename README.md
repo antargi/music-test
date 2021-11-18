@@ -1,27 +1,22 @@
-# MusicForm
+Pasos para ejecutar aplicación:
+1. Descomprimir zip
+2. En la carpeta de music-apim, abrir una terminal e ingresar el siguiente comando por consola:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
+Si ya tienes instalado maven en tu computador (si no lo tienes instalado, te aparecerá que no reconoce el comando):
 
-## Development server
+`mvn spring-boot:run`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+De lo contrario, puedes hacerlo con este comando al interior de la carpeta:
 
-## Code scaffolding
+`./mvnw spring-boot:run`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+3. En la carpeta de music-form, abrir una terminal e ingresar el siguiente comando por consola:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+`ng serve`
 
-## Running unit tests
+4. Abrir un navegador web, como Chrome y dirigirse a la siguiente ruta:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`http://localhost:4200`
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+5.Ingresar datos y enviar formulario :)
